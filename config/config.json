@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "flush_db",
+    "database": "flushdb",
     "host": "localhost",
     "dialect": "mysql"
   },
