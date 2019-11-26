@@ -23,6 +23,10 @@ module.exports = function(sequelize, DataTypes) {
     salt: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    gender: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   });
 
