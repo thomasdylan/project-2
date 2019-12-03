@@ -1,5 +1,6 @@
 require("dotenv").config();
 var express = require("express");
+var session = require("express-session");
 var exphbs = require("express-handlebars");
 
 var db = require("./models");
@@ -11,6 +12,18 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use(
+  session({
+    name: "sid",
+    secret: "secretToiletTester",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 6.048e8,
+      secure: false
+    }
+  })
+);
 
 // Handlebars
 app.engine(
