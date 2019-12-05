@@ -13,7 +13,7 @@ module.exports = function(app) {
       password: req.body.password,
       gender: req.body.gender
     };
-    db.User.findOne({
+    db.Users.findOne({
       where: {
         email: req.body.email
       }
@@ -43,7 +43,7 @@ module.exports = function(app) {
 
   //LOGIN
   app.post("/api/login", function(req, res) {
-    db.User.findOne({
+    db.Users.findOne({
       where: {
         email: req.body.email
       }
@@ -66,7 +66,7 @@ module.exports = function(app) {
   //PROFILE
   app.get("/profile", function(req, res) {
     var decoded = jwt.verify(req.headers.authorization, process.env.SECRET_KEY);
-    db.User.findOne({
+    db.Users.findOne({
       where: {
         id: decoded.id
       }
@@ -84,7 +84,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/user/:id", function(req, res) {
-    db.User.findOne({
+    db.Users.findOne({
       where: {
         id: req.params.id
       }
@@ -94,7 +94,7 @@ module.exports = function(app) {
   });
 
   app.put("/api/user/:id", function(req, res) {
-    db.User.update(
+    db.Users.update(
       {
         userName: req.body.userName
       },
@@ -128,7 +128,7 @@ module.exports = function(app) {
   });
 
   app.delete("/api/user/:id", function(req, res) {
-    db.User.destroy({
+    db.Users.destroy({
       where: {
         id: req.params.id
       }

@@ -1,47 +1,47 @@
 // Get references to page elements
-var $reviewText = $("#example-text");
-var $reviewDescription = $("#review-description");
+var $exampleText = $("#example-text");
+var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
-var $reviewList = $("#review-list");
+var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveReview: function(review) {
+  saveExample: function(example) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/reviews",
-      data: JSON.stringify(review)
+      url: "api/examples",
+      data: JSON.stringify(example)
     });
   },
-  getReviews: function() {
+  getExamples: function() {
     return $.ajax({
-      url: "api/reviews",
+      url: "api/examples",
       type: "GET"
     });
   },
-  deleteReviews: function(id) {
+  deleteExample: function(id) {
     return $.ajax({
-      url: "api/reviews/" + id,
+      url: "api/examples/" + id,
       type: "DELETE"
     });
   }
 };
 
-// refreshReviews gets new reviews from the db and repopulates the list
-var refreshReviews = function() {
-  API.getReviews().then(function(data) {
-    var $reviews = data.map(function(review) {
+// refreshExamples gets new examples from the db and repopulates the list
+var refreshExamples = function() {
+  API.getExamples().then(function(data) {
+    var $examples = data.map(function(example) {
       var $a = $("<a>")
-        .text(review.text)
-        .attr("href", "/review/" + review.id);
+        .text(example.text)
+        .attr("href", "/example/" + example.id);
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": review.id
+          "data-id": example.id
         })
         .append($a);
 
@@ -54,8 +54,8 @@ var refreshReviews = function() {
       return $li;
     });
 
-    $reviewList.empty();
-    $reviewList.append($examples);
+    $exampleList.empty();
+    $exampleList.append($examples);
   });
 };
 
@@ -64,12 +64,12 @@ var refreshReviews = function() {
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
-  var review = {
-    text: $reviewText.val().trim(),
-    description: $reviewDescription.val().trim()
+  var example = {
+    text: $exampleText.val().trim(),
+    description: $exampleDescription.val().trim()
   };
 
-  if (!(review.text && review.description)) {
+  if (!(example.text && example.description)) {
     alert("You must enter an example text and description!");
     return;
   }
