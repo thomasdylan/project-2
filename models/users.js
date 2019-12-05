@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     email: {
-      type: DataTypes.UUID,
+      type: DataTypes.STRING,
       allowNull: false,
       unique: true,
       validate: {
@@ -17,10 +17,6 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     password: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    salt: {
       type: DataTypes.STRING,
       allowNull: false
     },
