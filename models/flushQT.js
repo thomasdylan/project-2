@@ -17,11 +17,13 @@ var restroom = sequelize.define("restroom", {
     
     location: Sequelize.STRING,
     rateRestroom: Sequelize.STRING,
-    howClean: Sequelize.STRING,
+    cleanliness: Sequelize.STRING,
     tmi: Sequelize.STRING
     
     
 });
+
+
 
 
 // Syncs with DB
