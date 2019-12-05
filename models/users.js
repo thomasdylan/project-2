@@ -1,9 +1,8 @@
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("Users", {
     userName: {
-      type: DataTypes.UUID,
+      type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
       validate: {
         len: [4, 12]
       }
@@ -27,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   // User.associate = function(models) {
-  //   User.hasMany(models.Post, {
+  //   User.hasMany(models.userPost, {
   //     onDelete: "CASCADE"
   //   });
   // };

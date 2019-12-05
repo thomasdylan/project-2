@@ -51,7 +51,7 @@ module.exports = function(app) {
       .then(function(user) {
         if (bcrypt.compareSync(req.body.password, user.password)) {
           var token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
-            expiresIn: 1440
+            expiresIn: 144000
           });
           res.json({ token: token });
         } else {
@@ -110,8 +110,7 @@ module.exports = function(app) {
   });
 
   app.put("/api/user/:id/passwordChange", function(req, res) {
-    var salt = bcrypt.genSaltSync(16);
-    var hash = bcrypt.hashSync(req.body.password, salt);
+    var hash = bcrypt.hashSync(req.body.password, 10);
     db.Users.update(
       {
         password: hash
