@@ -8,9 +8,9 @@ module.exports = function(app) {
 
   // Load Review By ID
   app.get("/reviews/:id", function(req, res) {
-    db.Flush.findOne({ where: { id: req.params.id } }).then(function(dbFlush) {
+    db.Post.findOne({ where: { id: req.params.id } }).then(function(dbPost) {
       res.render("review", {
-        flush: dbFlush
+        Post: dbPost
       });
     });
   });
