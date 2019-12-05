@@ -1,9 +1,9 @@
 var expect = require("chai").expect;
+var apiRoutes = require('../routes/apiRoutes');
 
-describe("canary test", function() {
-  // A "canary" test is one we set up to always pass
-  // This can help us ensure our testing suite is set up correctly before writing real tests
-  it("should pass this canary test", function() {
-    expect(true).to.be.true;
+
+describe("Get", function() {
+  it("Should return all user reviews", function() {
+    expect().to.be.true;
   });
 });
