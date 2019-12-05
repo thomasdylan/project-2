@@ -1,23 +1,86 @@
 var db = require("../models");
 var bcrypt = require("bcryptjs");
+var jwt = require("jsonwebtoken");
+
+process.env.SECRET_KEY = "secret";
 
 module.exports = function(app) {
+  //REGISTER
   app.post("/api/register", function(req, res) {
-    // The salt and hash variables are used for password encryption.
-    var salt = bcrypt.genSaltSync(16);
-    var hash = bcrypt.hashSync(req.body.password, salt);
-    console.log("Hash: " + hash);
-    db.Users.create({
+    var userData = {
       userName: req.body.userName,
       email: req.body.email,
-      password: hash,
-      salt: salt,
+      password: req.body.password,
       gender: req.body.gender
-    }).then(function(dbUser) {
-      console.log("User Added");
-      // May want to route to users page after creation.
-      res.json(dbUser);
-    });
+    };
+    db.Users.findOne({
+      where: {
+        email: req.body.email
+      }
+    })
+      .then(function(user) {
+        if (!user) {
+          var hash = bcrypt.hashSync(userData.password, 10);
+          userData.password = hash;
+          db.Users.create(userData)
+            .then(function(user) {
+              var token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
+                expiresIn: 1440
+              });
+              res.json({ token: token });
+            })
+            .catch(function(err) {
+              res.send("error: " + err);
+            });
+        } else {
+          res.json({ err: "User already exists" });
+        }
+      })
+      .catch(function(err) {
+        res.send("error: " + err);
+      });
+  });
+
+  //LOGIN
+  app.post("/api/login", function(req, res) {
+    db.Users.findOne({
+      where: {
+        email: req.body.email
+      }
+    })
+      .then(function(user) {
+        if (bcrypt.compareSync(req.body.password, user.password)) {
+          var token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
+            expiresIn: 144000
+          });
+          res.json({ token: token });
+        } else {
+          res.send("User does not exist");
+        }
+      })
+      .catch(function(err) {
+        res.send("error: " + err);
+      });
+  });
+
+  //PROFILE
+  app.get("/profile", function(req, res) {
+    var decoded = jwt.verify(req.headers.authorization, process.env.SECRET_KEY);
+    db.Users.findOne({
+      where: {
+        id: decoded.id
+      }
+    })
+      .then(function(user) {
+        if (user) {
+          res.json(user);
+        } else {
+          res.send("User does not exist");
+        }
+      })
+      .catch(function(err) {
+        res.send("error: " + err);
+      });
   });
 
   app.get("/api/user/:id", function(req, res) {
@@ -47,8 +110,7 @@ module.exports = function(app) {
   });
 
   app.put("/api/user/:id/passwordChange", function(req, res) {
-    var salt = bcrypt.genSaltSync(16);
-    var hash = bcrypt.hashSync(req.body.password, salt);
+    var hash = bcrypt.hashSync(req.body.password, 10);
     db.Users.update(
       {
         password: hash

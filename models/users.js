@@ -1,15 +1,14 @@
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("Users", {
     userName: {
-      type: DataTypes.UUID,
+      type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
       validate: {
         len: [4, 12]
       }
     },
     email: {
-      type: DataTypes.UUID,
+      type: DataTypes.STRING,
       allowNull: false,
       unique: true,
       validate: {
@@ -20,20 +19,16 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    salt: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     gender: {
       type: DataTypes.STRING,
       allowNull: true
     }
   });
 
-  // User.associate = function(models) {
-  //   User.hasMany(models.Post, {
-  //     onDelete: "CASCADE"
-  //   });
-  // };
+  User.associate = function(models) {
+    User.hasMany(models.Post, {
+      onDelete: "cascade"
+    });
+  };
   return User;
 };
