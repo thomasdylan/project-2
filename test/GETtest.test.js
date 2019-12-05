@@ -21,7 +21,7 @@ describe("GET /api/reviews", function() {
 
   it("should find all reviews", function(done) {
     // Add some examples to the db to test with
-    db.Flush.bulkCreate([
+    db.Users.bulkCreate([
       { text: "First Review", description: "First Text Body" },
       { text: "Second Review", description: "Second Text Body" }
     ]).then(function() {
