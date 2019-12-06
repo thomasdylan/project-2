@@ -1,16 +1,23 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Load index page
+  // Load landing page
   app.get("/", function(req, res) {
-    res.render("example");
+    res.render("landing");
+  });
+
+  // Load post page
+  app.get("/post", function(req, res) {
+    res.render("post");
   });
 
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
+  app.get("/profile/:id", function(req, res) {
+    db.Users.findOne({ where: { id: req.params.id } }).then(function(dbResult) {
+      res.render("profile", {
+        userName: dbResult.userName,
+        email: dbResult.email,
+        gender: dbResult.gender
       });
     });
   });
@@ -23,5 +30,6 @@ module.exports = function(app) {
 
 
 //app.get("/", function(req, res) {
-  //res.sendFile(path.join(__dirname, "../public/view.html"));
+//res.sendFile(path.join(__dirname, "../public/view.html"));
 //});
+
