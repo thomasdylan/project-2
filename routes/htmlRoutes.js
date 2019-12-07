@@ -1,16 +1,24 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Load index page
+  // Load landing page
   app.get("/", function(req, res) {
-    res.render("example");
+    res.render("landing");
   });
 
-  // Load Review Page and pass in a Review
-  app.get("/reviews/:id", function(req, res) {
-    db.Post.findOne({ where: { id: req.params.id } }).then(function(dbPost) {
-      res.render("post", {
-        post: dbPost
+  // Load post page
+  app.get("/post", function(req, res) {
+    res.render("post");
+  });
+
+
+  // Load example page and pass in an example by id
+  app.get("/profile/:id", function(req, res) {
+    db.Users.findOne({ where: { id: req.params.id } }).then(function(dbResult) {
+      res.render("profile", {
+        userName: dbResult.userName,
+        email: dbResult.email,
+        gender: dbResult.gender
       });
     });
   });
@@ -23,5 +31,6 @@ module.exports = function(app) {
 
 
 //app.get("/", function(req, res) {
-  //res.sendFile(path.join(__dirname, "../public/view.html"));
+//res.sendFile(path.join(__dirname, "../public/view.html"));
 //});
+
