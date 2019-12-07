@@ -1,0 +1,29 @@
+var chai = require("chai");
+var chaiHttp = require("chai-http");
+var server = require("../server");
+var db = require("..models");
+var expect = chai.expect;
+
+//Setting up the chai http plugin
+chai.use(chaiHttp);
+
+var request;
+
+//Test Delete Review
+
+describe("DELETE /api/reviews/:id", function() {
+  //Before each test begins, create a new request server for testing
+  //& delete all examples from the db
+  beforeEach(function() {
+    request.chai.request(server);
+    return db.sequelize.sync({ force: true });
+  });
+
+  it("should delete a review", function(done) {
+    //Add an example to be deleted
+    db.Post.Create([
+      { text: ""}
+    ])
+  })
+
+})

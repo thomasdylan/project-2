@@ -9,6 +9,8 @@ chai.use(chaiHttp);
 
 var request;
 
+//Test Post Review
+
 describe("POST /api/reviews", function() {
   // Before each test begins, create a new request server for testing
   // & delete all examples from the db
@@ -20,8 +22,8 @@ describe("POST /api/reviews", function() {
   it("should save a new review", function(done) {
     // Create an object to send to the endpoint
     var reqBody = {
-      text: "Review Text",
-      description: "Review Description"
+      title: "Review Title",
+      tmi: "Review Description"
     };
 
     // POST the request body to the server
