@@ -13,7 +13,7 @@ module.exports = function(app) {
       password: req.body.password,
       gender: req.body.gender
     };
-    db.User.findOne({
+    db.Users.findOne({
       where: {
         email: req.body.email
       }
@@ -22,10 +22,11 @@ module.exports = function(app) {
         if (!user) {
           var hash = bcrypt.hashSync(userData.password, 10);
           userData.password = hash;
-          db.User.create(userData)
+          db.Users.create(userData)
             .then(function(user) {
               var token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
-                expiresIn: 1440
+                // eslint-disable-next-line prettier/prettier
+                expiresIn: 8.64e+7
               });
               res.json({ token: token });
             })
@@ -43,7 +44,7 @@ module.exports = function(app) {
 
   //LOGIN
   app.post("/api/login", function(req, res) {
-    db.User.findOne({
+    db.Users.findOne({
       where: {
         email: req.body.email
       }
@@ -51,29 +52,11 @@ module.exports = function(app) {
       .then(function(user) {
         if (bcrypt.compareSync(req.body.password, user.password)) {
           var token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
-            expiresIn: 144000
+            // eslint-disable-next-line prettier/prettier
+            expiresIn: 8.64e+7
           });
           res.json({ token: token });
-        } else {
-          res.send("User does not exist");
-        }
-      })
-      .catch(function(err) {
-        res.send("error: " + err);
-      });
-  });
-
-  //PROFILE
-  app.get("/profile", function(req, res) {
-    var decoded = jwt.verify(req.headers.authorization, process.env.SECRET_KEY);
-    db.User.findOne({
-      where: {
-        id: decoded.id
-      }
-    })
-      .then(function(user) {
-        if (user) {
-          res.json(user);
+          console.log("Successful Login");
         } else {
           res.send("User does not exist");
         }
@@ -84,7 +67,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/user/:id", function(req, res) {
-    db.User.findOne({
+    db.Users.findOne({
       where: {
         id: req.params.id
       }
@@ -94,7 +77,7 @@ module.exports = function(app) {
   });
 
   app.put("/api/user/:id", function(req, res) {
-    db.User.update(
+    db.Users.update(
       {
         userName: req.body.userName
       },
@@ -111,7 +94,7 @@ module.exports = function(app) {
 
   app.put("/api/user/:id/passwordChange", function(req, res) {
     var hash = bcrypt.hashSync(req.body.password, 10);
-    db.User.update(
+    db.Users.update(
       {
         password: hash
       },
@@ -127,7 +110,7 @@ module.exports = function(app) {
   });
 
   app.delete("/api/user/:id", function(req, res) {
-    db.User.destroy({
+    db.Users.destroy({
       where: {
         id: req.params.id
       }

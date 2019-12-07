@@ -1,9 +1,17 @@
 var db = require("../models");
+var jwt = require("jsonwebtoken");
+
+process.env.SECRET_KEY = "secret";
 
 module.exports = function(app) {
   // Load landing page
   app.get("/", function(req, res) {
-    res.render("landing");
+    res.render("index");
+  });
+
+  //Login page
+  app.get("/login", function(req, res) {
+    res.render("login");
   });
 
   // Load post page
@@ -23,14 +31,32 @@ module.exports = function(app) {
     });
   });
 
+  //PROFILE
+  app.get("/profile", function(req, res) {
+    var decoded = jwt.verify(req.headers.authorization, process.env.SECRET_KEY);
+    db.Users.findOne({
+      where: {
+        id: decoded.id
+      }
+    })
+      .then(function(user) {
+        if (user) {
+          res.json(user);
+        } else {
+          res.send("User does not exist");
+        }
+      })
+      .catch(function(err) {
+        res.send("error: " + err);
+      });
+  });
+
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
   });
 };
 
-
 //app.get("/", function(req, res) {
 //res.sendFile(path.join(__dirname, "../public/view.html"));
 //});
-
