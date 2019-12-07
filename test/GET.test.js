@@ -22,8 +22,8 @@ describe("GET /api/reviews", function() {
   it("should find all reviews", function(done) {
     // Add some examples to the db to test with
     db.Post.bulkCreate([
-      { title: "Review Title(1)", tmi: "Review Description(1)" },
-      { title: "Review Title(2)", tmi: "Review Description(2)" }
+      { title: "Review Title(1)", rating: '4', tmi: "Review Description(1)" },
+      { title: "Review Title(2)", rating: '2', tmi: "Review Description(2)" }
     ]).then(function() {
       // Request the route that returns all examples
       request.get("/api/reviews").end(function(err, res) {
@@ -42,11 +42,11 @@ describe("GET /api/reviews", function() {
 
         expect(responseBody[0])
           .to.be.an("object")
-          .that.includes({ title: "Review Title(1)", tmi: "Review Description(1)" });
+          .that.includes({ title: "Review Title(1)", rating: '4', tmi: "Review Description(1)" });
 
         expect(responseBody[1])
           .to.be.an("object")
-          .that.includes({ title: "Review Title(2)", tmi: "Review Description(2)" });
+          .that.includes({ title: "Review Title(2)", rating: '2', tmi: "Review Description(2)" });
 
         // The `done` function is used to end any asynchronous tests
         done();

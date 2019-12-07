@@ -15,14 +15,14 @@ describe("DELETE /api/reviews/:id", function() {
   //Before each test begins, create a new request server for testing
   //& delete all examples from the db
   beforeEach(function() {
-    request.chai.request(server);
+    request = chai.request(server);
     return db.sequelize.sync({ force: true });
   });
 
   it("should delete a review", function(done) {
     //Add an example to be deleted
-    db.Post.Create([
-      { title: "Review Title", tmi: "Review Description" },
+    db.Post.bulkCreate([
+      { title: "Review Title", rating: 4, tmi: "Review Description" },
     ]).then(function() {
       //Request the route that deletes a review
       request.get("/api/reviews/:id").end(function(err, res) {
@@ -33,7 +33,7 @@ describe("DELETE /api/reviews/:id", function() {
 
         should.not.exist(err);
 
-        res.should.have.status(200);
+        responseStatus.should.have.status(200);
 
         responseBody
           .should.be.a("object")
@@ -42,8 +42,12 @@ describe("DELETE /api/reviews/:id", function() {
         responseBody.REMOVED
           .should.be.a("object")
           .should.have.property("title")
+          .should.have.property("rating")
+          .should.have.property("tmi")
           .should.have.property("id")
-          .title.should.equal("Review Title");
+          .title.should.equal("Review Title")
+          .rating.should.equal(4)
+          .tmi.should.equal("Review Description");
       });
     });
   });

@@ -23,7 +23,8 @@ describe("POST /api/reviews", function() {
     // Create an object to send to the endpoint
     var reqBody = {
       title: "Review Title",
-      tmi: "Review Description"
+      rating: 4,
+      tmi: "Review Description",
     };
 
     // POST the request body to the server
