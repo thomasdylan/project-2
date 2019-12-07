@@ -1,7 +1,7 @@
 var chai = require("chai");
 var chaiHttp = require("chai-http");
 var server = require("../server");
-var db = require("..models");
+var db = require("../models");
 var expect = chai.expect;
 
 //Setting up the chai http plugin
@@ -22,8 +22,26 @@ describe("DELETE /api/reviews/:id", function() {
   it("should delete a review", function(done) {
     //Add an example to be deleted
     db.Post.Create([
-      { text: ""}
-    ])
+      { title: "Review Title", tmi: "Review Description", id: 1 },
+    ]).then(function() {
+      //Request the route that deletes a review
+      request.get("/api/reviews/:id").end(function(err, res) {
+        let responseStatus = res.status;
+        let responseBody = res.body;
+
+        //Run assertions on the response
+
+        expect(err).to.be.null;
+
+        expect(responseStatus).to.equal(200);
+
+        expect(responseBody)
+          .to.be.an("object")
+          .to.have.property("removed");
+
+        expect(responseBody)
+      })
+    })
   })
 
 })
