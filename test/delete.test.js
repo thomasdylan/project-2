@@ -2,7 +2,7 @@ var chai = require("chai");
 var chaiHttp = require("chai-http");
 var server = require("../server");
 var db = require("../models");
-var expect = chai.expect;
+var should = chai.should();
 
 //Setting up the chai http plugin
 chai.use(chaiHttp);
@@ -22,7 +22,7 @@ describe("DELETE /api/reviews/:id", function() {
   it("should delete a review", function(done) {
     //Add an example to be deleted
     db.Post.Create([
-      { title: "Review Title", tmi: "Review Description", id: 1 },
+      { title: "Review Title", tmi: "Review Description" },
     ]).then(function() {
       //Request the route that deletes a review
       request.get("/api/reviews/:id").end(function(err, res) {
@@ -31,17 +31,21 @@ describe("DELETE /api/reviews/:id", function() {
 
         //Run assertions on the response
 
-        expect(err).to.be.null;
+        should.not.exist(err);
 
-        expect(responseStatus).to.equal(200);
+        res.should.have.status(200);
 
-        expect(responseBody)
-          .to.be.an("object")
-          .to.have.property("removed");
+        responseBody
+          .should.be.a("object")
+          .should.have.property("REMOVED");
 
-        expect(responseBody)
-      })
-    })
-  })
+        responseBody.REMOVED
+          .should.be.a("object")
+          .should.have.property("title")
+          .should.have.property("id")
+          .title.should.equal("Review Title");
+      });
+    });
+  });
 
-})
+});
