@@ -6,11 +6,11 @@ module.exports = function(app) {
     res.render("example");
   });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
+  // Load Review Page and pass in a Review
+  app.get("/reviews/:id", function(req, res) {
+    db.Post.findOne({ where: { id: req.params.id } }).then(function(dbPost) {
+      res.render("post", {
+        post: dbPost
       });
     });
   });
