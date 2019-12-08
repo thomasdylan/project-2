@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+    <a class="navbar-brand" href="/post">FLUSH</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<br>
+<br>
+<br>
+
+<div class="row">
+    <div class="col-md-2">
+        <div class="card" style="width: 10rem;">
+            <i class="fas fa-toilet"></i>
+            <div class="card-body">
+                <a href="post" class="btn btn-light text-dark">Home</a><br>
+                <a href="profile" class="btn btn-light text-dark">Profile</a><br>
+                <a href="*" class="btn btn-light text-dark">Settings</a><br>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <hr>
+        <h3>{{userName}}</h3>
+        <br>
+        <div class="userPost">
+            {{#each post}}
+            <div class="card" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">{{title}}</h5>
+                    <h6 class="card-subtitle mb-2">Rating: {{rating}}</h6>
+                    <p class="card-text">{{tmi}}</p>
+                    <p class="card-subtitle mb-2">{{user}} - {{gender}}</p>
+                </div>
+            </div>
+            <br>
+            {{/each}}
+        </div>
+    </div>
+</div>
