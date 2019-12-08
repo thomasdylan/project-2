@@ -2,9 +2,13 @@
     <div class="jumbotron">
         <h1 class="display-4">FLUSH</h1>
         <hr>
-        <h3>Login</h3>
+        <h3>Register</h3>
         <br>
-        <form action="/login" method="POST">
+        <form id="register" action="/signup" method="POST">
+            <div class="form-group">
+                <label for="userName">User Name</label>
+                <input type="userName" name="userName" id="userName" required>
+            </div>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" required>
@@ -12,6 +16,10 @@
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" name="password" id="password" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <input type="gender" name="gender" id="gender" required>
             </div>
             <button type="submit" class="btn btn-light text-dark">Submit</button>
         </form>
