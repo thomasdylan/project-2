@@ -15,9 +15,9 @@
 ##Problem This Project Solves -
     what is a safe, and clean public restroom in my area?
     what is the nicest restroom in my area?
-##Motivation - 
+##Motivation -
 
-##Individual Responsibilities - 
+##Team Effort:
 
     *Randa 
         -post creation form
@@ -38,6 +38,10 @@
         -DataBase
         -ReadMe
         -slide show
+
+##Individual Responsibilities - 
+
+    
         
 ##Challenges: 
      
