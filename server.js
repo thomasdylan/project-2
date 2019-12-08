@@ -17,7 +17,9 @@ app.use(express.static("public"));
 
 app.use(
   session({
-    cookie: { maxAge: 60000 },
+    cookie: {
+      maxAge: 3600000
+    },
     secret: "yougotflushed",
     resave: false,
     saveUninitialized: false
@@ -38,7 +40,7 @@ app.set("view engine", "handlebars");
 
 // Routes
 
-require("./routes/apiRoutes")(app, passport);
+require("./routes/postApiRoutes")(app, passport);
 require("./routes/userApiRoutes")(app, passport);
 require("./routes/htmlRoutes")(app, passport);
 

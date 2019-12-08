@@ -1,8 +1,8 @@
 var bCrypt = require("bcryptjs");
 var db = require("../models");
 
+// eslint-disable-next-line no-unused-vars
 module.exports = function(passport, user) {
-  var User = user;
   var LocalStrategy = require("passport-local").Strategy;
 
   passport.use(
@@ -35,6 +35,7 @@ module.exports = function(passport, user) {
               password: userPassword,
               gender: req.body.gender
             };
+            // eslint-disable-next-line no-unused-vars
             db.Users.create(userData).then(function(newUser, created) {
               if (!newUser) {
                 return done(null, false);
@@ -59,7 +60,6 @@ module.exports = function(passport, user) {
         passReqToCallback: true
       },
       function(req, email, password, done) {
-        var User = user;
         var isValidPassword = function(userPassword, password) {
           return bCrypt.compareSync(password, userPassword);
         };
