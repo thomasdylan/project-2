@@ -1,5 +1,7 @@
 $(document).ready(function() {
-  var email = $("#email");
+  // eslint-disable-next-line prettier/prettier
+  var userName = $("#userName");
+  // eslint-disable-next-line prettier/prettier
   var password = $("#password");
   var loginForm = $("#login");
 
@@ -7,11 +9,13 @@ $(document).ready(function() {
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    // Wont submit the post if we are missing an email or password
-    if (!email.val().trim() || !password.val().trim()) {
+    // Wont submit the post if we are missing an userName or password
+    if (!userName.val().trim() || !password.val().trim()) {
       return;
     } else {
-      submitLogin(login);
+      console.log("Clicked no errors.");
+      submitLogin();
+      console.log("hit submitLogin");
     }
   }
 
@@ -21,8 +25,7 @@ $(document).ready(function() {
       url: "/api/login",
       email: email,
       password: password
-    }).then(function() {
-      window.location.href = "/post";
     });
+    console.log("ran");
   }
 });

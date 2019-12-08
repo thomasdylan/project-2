@@ -19,7 +19,6 @@ module.exports = function(app) {
     res.render("post");
   });
 
-
   // Load example page and pass in an example by id
   app.get("/profile/:id", function(req, res) {
     db.Users.findOne({ where: { id: req.params.id } }).then(function(dbResult) {
