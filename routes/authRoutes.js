@@ -17,7 +17,6 @@ exports.profile = function(req, res) {
       user: req.user.userName
     }
   }).then(function(dbPost) {
-    console.log("DBPOST: ", dbPost);
     res.render("profile", {
       post: dbPost,
       title: JSON.stringify(dbPost.title),
@@ -34,7 +33,6 @@ exports.profile = function(req, res) {
 
 exports.post = function(req, res) {
   db.Post.findAll({}).then(function(dbPost) {
-    console.log("DBPOST: ", dbPost);
     res.render("post", {
       post: dbPost,
       title: JSON.stringify(dbPost.title),
