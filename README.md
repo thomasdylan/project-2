@@ -1,7 +1,7 @@
 #**Project Title - FLUSH**
 
 ##Members: 
-    *Daniel Thomas
+    *Dylan Thomas
     *Randa Viets
     *Kade Christlieb
     *Luke Pettit
@@ -24,7 +24,7 @@
         -Post API routes
         -Mocha_Chai testing
 
-    *Daniel 
+    *Dylan
         -Login credentials
         -user API routes
         -html API routes

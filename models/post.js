@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
   Post.associate = function(models) {
     Post.belongsTo(models.Users, {
       foreignKey: {
-        allowNull: false
+        allowNull: true
       }
     });
   };
