@@ -12,17 +12,34 @@ exports.signin = function(req, res) {
 };
 
 exports.profile = function(req, res) {
-  res.render("profile", {
-    userName: req.user.userName,
-    gender: req.user.gender
+  db.Post.findAll({
+    where: {
+      user: req.user.userName
+    }
+  }).then(function(dbPost) {
+    res.render("profile", {
+      post: dbPost,
+      title: JSON.stringify(dbPost.title),
+      rating: JSON.stringify(dbPost.rating),
+      tmi: JSON.stringify(dbPost.tmi),
+      user: JSON.stringify(dbPost.user),
+      gender: JSON.stringify(dbPost.gender),
+      userName: req.user.userName,
+      gender: req.user.gender,
+      email: req.user.email
+    });
   });
 };
 
 exports.post = function(req, res) {
   db.Post.findAll({}).then(function(dbPost) {
-    console.log(dbPost);
     res.render("post", {
       post: dbPost,
+      title: JSON.stringify(dbPost.title),
+      rating: JSON.stringify(dbPost.rating),
+      tmi: JSON.stringify(dbPost.tmi),
+      user: JSON.stringify(dbPost.user),
+      gender: JSON.stringify(dbPost.gender),
       userName: req.user.userName,
       gender: req.user.gender,
       email: req.user.email
