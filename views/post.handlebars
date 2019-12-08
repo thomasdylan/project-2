@@ -62,14 +62,16 @@
         <br>
 
         <div class="allPost">
-            {{#each post.Post}}
-                <div class="card" style="width: 18rem;">
+            {{#each post}}
+                <div class="card" style="width: 100%;">
                     <div class="card-body">
-                        <h5 class="card-title">{{post.Post.dataValues.title}}</h5>
-                        <h6 class="card-subtitle mb-2">Rating: {{post.Post.dataValues.rating}}</h6>
-                        <p class="card-text">{{post.Post.dataValues.tmi}}</p>
+                        <h5 class="card-title">{{title}}</h5>
+                        <h6 class="card-subtitle mb-2">Rating: {{rating}}</h6>
+                        <p class="card-text">{{tmi}}</p>
+                        <p class="card-subtitle mb-2">{{user}} - {{gender}}</p>
                     </div>
                 </div>
+                <br>
             {{/each}}
         </div>
     </div>

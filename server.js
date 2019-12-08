@@ -17,7 +17,9 @@ app.use(express.static("public"));
 
 app.use(
   session({
-    cookie: { maxAge: 60000 },
+    cookie: {
+      maxAge: 1000 * 36000
+    },
     secret: "yougotflushed",
     resave: false,
     saveUninitialized: false

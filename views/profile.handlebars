@@ -32,5 +32,18 @@
         <hr>
         <h3>{{userName}}</h3>
         <br>
+        <div class="userPost">
+            {{#each post}}
+            <div class="card" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">{{title}}</h5>
+                    <h6 class="card-subtitle mb-2">Rating: {{rating}}</h6>
+                    <p class="card-text">{{tmi}}</p>
+                    <p class="card-subtitle mb-2">{{user}} - {{gender}}</p>
+                </div>
+            </div>
+            <br>
+            {{/each}}
+        </div>
     </div>
 </div>
