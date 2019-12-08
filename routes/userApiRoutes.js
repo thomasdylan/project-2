@@ -10,7 +10,7 @@ module.exports = function(app, passport) {
   app.post(
     "/signup",
     passport.authenticate("local-signup", {
-      successRedirect: "/profile",
+      successRedirect: "/post",
       failureRedirect: "/signup"
     })
   );
@@ -31,6 +31,7 @@ module.exports = function(app, passport) {
 
   app.get("/logout", authControl.logout);
 
+  //Logged in Auth
   function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
       return next();

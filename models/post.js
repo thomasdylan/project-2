@@ -13,17 +13,21 @@ module.exports = function(sequelize, DataTypes) {
     },
     tmi: {
       type: DataTypes.TEXT,
-      allowNull: false,
       validate: {
-        len: [1, 255]
+        max: 256
       }
+    },
+    user: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    gender: {
+      type: DataTypes.STRING
     }
   });
   Post.associate = function(models) {
     Post.belongsTo(models.Users, {
-      foreignKey: {
-        allowNull: true
-      }
+      foreignKey: "userEmail"
     });
   };
   return Post;
