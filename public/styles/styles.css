@@ -16,6 +16,10 @@ body {
   background-color: #00acee;
 }
 
+.card {
+  color: black;
+}
+
 textarea {
   resize: none;
 }
