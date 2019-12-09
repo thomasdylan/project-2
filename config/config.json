@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "Plzgtf0k!",
+    "password": null,
     "database": "flushdb",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Plzgtf0k!",
+    "password": null,
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
