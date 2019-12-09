@@ -19,3 +19,7 @@ body {
 textarea {
   resize: none;
 }
+
+#side {
+  background-color: #00acee;
+}
