@@ -11,7 +11,7 @@ var db = {};
 
 if (process.env.JAWSDB_URL) {
   db = mysql.createConnection(process.env.JAWSDB_URL);
-  var sequelize = new Sequelize(process.env[JAWSDB_URL]);
+  var sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
