@@ -2,7 +2,7 @@
 ### [Site](https://flush2019.herokuapp.com/)
 
 Flush is a user based application that allows user to post and find public restrooms based off of ratings.  
-The idea behind flush is to help users in need know which restrooms to avoid and which ones are sutable for their private needs.  
+The idea behind flush is to help users in need know which restrooms to avoid and which ones are sutable for their private needs.
 Flush allows users to create an account and make post with a title, rating and a TMI description for restrooms they use.  
 Users post all show up on the post page similar to your timeline on other social media sites.  
 Flush was created by a four person team during the University of Utah Web Development Bootcamp.  
