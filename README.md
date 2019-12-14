@@ -4,8 +4,20 @@
 Flush is a user based application that allows user to post and find public restrooms based off of ratings.  
 The idea behind flush is to help users in need know which restrooms to avoid and which ones are sutable for their private needs.
 Flush allows users to create an account and make post with a title, rating and a TMI description for restrooms they use.
-Users post all show up on the post page similar to your timeline on other social media sites.  
+Users post all show up on the post page similar to your timeline on other social media sites.  Users can also view just their post on the profile page.
 Flush was created by a four person team during the University of Utah Web Development Bootcamp.  
+
+## Getting Started
+
+When you first visit the site you are given the option to log in or sign up.  If you do not already have an account you can create one by clicking **Register**.  
+![Register Gif](https://media.giphy.com/media/lQVFAhkZWYdcj67Xzp/giphy.gif)
+Once an account is created you will be taken to the **Post** page where you can create a post or view post created by other users.  By clicking the **Profile** button on the left side of the page you will be taken to your profile where you can view all the post you created!  
+
+## Test Yourself
+
+If you wish to test this application without creating your own account you can use or guest account to try it out.
+**Email:** Guest@example.com    
+**Password:** Guest1
     
 ## Built With
 
