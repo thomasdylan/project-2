@@ -1,14 +1,11 @@
-#Flush
+# Flush
+### [Site](https://flush2019.herokuapp.com/)
 
-##Description -
-    Social Media App that user can track the bathrooms that they go too in -
-       *Ability to rate on a 5 Star basis
-       *Map with pins of toilets tracked
-       *TMI button that includes blog-type info for each toilet
-
-##Problem This Project Solves -
-    what is a safe, and clean public restroom in my area?
-    what is the nicest restroom in my area?
+Flush is a user based application that allows user to post and find public restrooms based off of ratings.  
+The idea behind flush is to help users in need know which restrooms to avoid and which ones are sutable for their private needs.  
+Flush allows users to create an account and make post with a title, rating and a TMI description for restrooms they use.  
+Users post all show up on the post page similar to your timeline on other social media sites.  
+Flush was created by a four person team during the University of Utah Web Development Bootcamp.  
     
 ## Built With
 
