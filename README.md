@@ -10,8 +10,11 @@ Flush was created by a four person team during the University of Utah Web Develo
 ## Getting Started
 
 When you first visit the site you are given the option to log in or sign up.  If you do not already have an account you can create one by clicking **Register**.  
-![Register Gif](https://media.giphy.com/media/lQVFAhkZWYdcj67Xzp/giphy.gif)
-Once an account is created you will be taken to the **Post** page where you can create a post or view post created by other users.  By clicking the **Profile** button on the left side of the page you will be taken to your profile where you can view all the post you created!  
+![Register Gif](https://media.giphy.com/media/lQVFAhkZWYdcj67Xzp/giphy.gif)  
+Once an account is created you will be taken to the **Post** page where you can create a post or view post created by other users.  
+![Post Gif](https://media.giphy.com/media/dXc3GluqhGK5PbkU9N/giphy.gif)    
+By clicking the **Profile** button on the left side of the page you will be taken to your profile where you can view all the post you created.  
+![Profile Gif](https://media.giphy.com/media/idSZ22ELl5mVOIA3uz/giphy.gif)  
 
 ## Test Yourself
 
