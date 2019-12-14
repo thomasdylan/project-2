@@ -1,10 +1,4 @@
-#**Project Title - FLUSH**
-
-##Members: 
-    *Dylan Thomas
-    *Randa Viets
-    *Kade Christlieb
-    *Luke Pettit
+#Flush
 
 ##Description -
     Social Media App that user can track the bathrooms that they go too in -
@@ -15,67 +9,21 @@
 ##Problem This Project Solves -
     what is a safe, and clean public restroom in my area?
     what is the nicest restroom in my area?
-##Motivation -
-
-##Team Effort:
-
-    *Randa 
-        -post creation form
-        -Post API routes
-        -Mocha_Chai testing
-
-    *Dylan
-        -Login credentials
-        -user API routes
-        -html API routes
-
-    *Kade
-        -user html
-        -sign/login html
-        -Display post html
-
-    *Luke
-        -DataBase
-        -ReadMe
-        -slide show
-
-##Individual Responsibilities - 
-
     
-        
-##Challenges: 
-     
+## Built With
 
-##Improvements:
+* [node.js](https://nodejs.org/en/) - The runtime environment for backend
+* [Express](https://expressjs.com/) - Web framework
+* [MySQL](https://www.mysql.com/) - Database
+* [Sequelize](https://sequelize.org/v4/) - ORM
+* [Handlebars](https://handlebarsjs.com/) - Template engine
+* [Passport](http://www.passportjs.org/) - User authentication
+* [Express Session](https://www.npmjs.com/package/express-session) - Session middleware
+* [Bcrypt](https://www.npmjs.com/package/bcryptjs) - Password encryption
 
-    -MapQuest or Google API to display restroom pins
+## Authors
 
-    -create restroom list from user info
-
-    -
-
-####Image:
-
-1.![alt text]()
-
-2.![alt text]()
-
-###Deployment:
-
-    *API 
-        Google API
-
-    *MySQL Database - Stores info on all restrooms
-        Sequelize ORM
-
-    *New Library to Use
-        NPM Cartoon-Avatar
-
-    *Tasks
-        Split/Grabbed from Trello
-
-    Task - by - Task
-        Everyone gets front-end/back-end
-
-    *Rough Outline of Design
-        Landing Page w/ Login & Register
+* **Dylan Thomas** - *models, routes, authentication* - [Github](https://github.com/thomasdylan)
+* **Randa Viets** - *post creation, post routes, testing* - [Github](https://github.com/KChristlieb)
+* **Kade Christlieb** - *html pages, form submission* - [Github](https://github.com/rcviets)
+* **Luke Pettit** - *mySQL database, presentation* - [Github](https://github.com/lpettit1)
