@@ -1,5 +1,5 @@
 # Flush
-### [Site](https://flush2019.herokuapp.com/)
+### [Site](https://thomasdylan.github.io/Flush)
 
 Flush is a user based application that allows user to post and find public restrooms based off of ratings.  
 The idea behind flush is to help users in need know which restrooms to avoid and which ones are sutable for their private needs.
